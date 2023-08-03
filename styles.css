@@ -1,5 +1,6 @@
 * {
     border: 1px solid green;
+    margin: 5px;
 }
 
 html {
@@ -21,4 +22,34 @@ aside {
 
 main {
   width: 85%
+}
+
+p {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  height: 15%;
+}
+
+.side-container {
+  height: 25%;
+}
+
+.result-section {
+  text-align: center;
+  height: 10%;
+}
+
+.play-zone {
+  height: 72%;
+}
+  
+.image {
+  height: 190px;
+}
+
+.score-counter {
+  height: 35px;
 }
