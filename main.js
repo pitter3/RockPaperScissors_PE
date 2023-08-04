@@ -14,8 +14,8 @@ function createPlayer(name, selection) {
   return player
 }
 
-var humanPlayer = createPlayer("Human", "Rock");
-var robotPlayer = createPlayer("Robot", "Scissors");
+var humanPlayer = createPlayer("Human", "Scissors");
+var robotPlayer = createPlayer("Robot", "Paper");
 
 
 function createGame(human, robot) {
@@ -36,13 +36,25 @@ var game = createGame(humanPlayer, robotPlayer);
 
 
 function gameResult(game) {
+  if (game.human.selection === game.robot.selection) {
+    return `It's a Draw!!`
+  }
   if (game.human.selection === 'Rock' && game.robot.selection === 'Scissors') {
     game.human.gameWon = true
+  }
+  if (game.human.selection === 'Paper' && game.robot.selection === 'Rock') {
+    game.human.gameWon = true
+  }
+  if (game.human.selection === 'Scissors' && game.robot.selection === 'Paper') {
+    game.human.gameWon = true
+  }
+  if (!game.human.gameWon) {
+    game.robot.gameWon = true
   }
   return game
 }
 
-var playerWins = gameResult(game)
+var checkWinner = gameResult(game)
 
 
 function updateScores(game) {
