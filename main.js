@@ -14,6 +14,11 @@ function createPlayer(name, selection) {
   return player
 }
 
+function computerSelection() {
+  var selectionChoices = ["Rock", "Paper", "Scissors"];
+  return selectionChoices[Math.floor(Math.random() * selectionChoices.length)];
+}
+
 function createGame(human, robot) {
   var game = {
     human: {
