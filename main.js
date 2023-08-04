@@ -43,3 +43,15 @@ function gameResult(game) {
 }
 
 var playerWins = gameResult(game)
+
+
+function updateScores(game) {
+  if (game.human.gameWon === true) {
+    humanScore++
+  }
+  return humanScore
+}
+
+updateScores(game)
+
+
