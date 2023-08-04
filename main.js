@@ -1,11 +1,10 @@
 // DATA MODEL
+
 var humanScore = 0;
 var robotScore = 0;
 
 
 // GAME LOGIC
-
-
 
 function createPlayer(name, selection) {
   var player = {
@@ -34,3 +33,13 @@ function createGame(human, robot) {
 }
 
 var game = createGame(humanPlayer, robotPlayer);
+
+
+function gameResult(game) {
+  if (game.human.selection === 'Rock' && game.robot.selection === 'Scissors') {
+    game.human.gameWon = true
+  }
+  return game
+}
+
+var playerWins = gameResult(game)
