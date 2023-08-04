@@ -55,3 +55,9 @@ function updateScores(game) {
 updateScores(game)
 
 
+function resetWinner(game) {
+  game.human.gameWon = false;
+  game.robot.gameWon = false;
+}
+
+resetWinner(game)
