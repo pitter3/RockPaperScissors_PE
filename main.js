@@ -14,10 +14,6 @@ function createPlayer(name, selection) {
   return player
 }
 
-var humanPlayer = createPlayer("Human", "Scissors");
-var robotPlayer = createPlayer("Robot", "Paper");
-
-
 function createGame(human, robot) {
   var game = {
     human: {
@@ -31,9 +27,6 @@ function createGame(human, robot) {
   }
   return game
 }
-
-var game = createGame(humanPlayer, robotPlayer);
-
 
 function gameResult(game) {
   if (game.human.selection === game.robot.selection) {
@@ -54,9 +47,6 @@ function gameResult(game) {
   return game
 }
 
-var checkWinner = gameResult(game)
-
-
 function updateScores(game) {
   if (game.human.gameWon === true) {
     humanScore++
@@ -64,12 +54,7 @@ function updateScores(game) {
   return humanScore
 }
 
-updateScores(game)
-
-
 function resetWinner(game) {
   game.human.gameWon = false;
   game.robot.gameWon = false;
 }
-
-resetWinner(game)
