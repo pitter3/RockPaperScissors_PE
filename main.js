@@ -55,8 +55,10 @@ function gameResult(game) {
 function updateScores(game) {
   if (game.human.gameWon === true) {
     humanScore++
+    return humanScore
   }
-  return humanScore
+  robotScore++
+  return robotScore
 }
 
 function resetWinner(game) {
