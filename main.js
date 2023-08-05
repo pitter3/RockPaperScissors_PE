@@ -1,3 +1,15 @@
+// QUERY SELECTORS
+
+var selectionButtons = document.querySelectorAll(".selector-image");
+var playZone = document.querySelector(".play-zone")
+
+// EVENT LISTENERS
+
+playZone.addEventListener("click", function() {
+testDelegation()
+});
+
+
 // DATA MODEL
 
 var humanScore = 0;
@@ -64,4 +76,8 @@ function updateScores(game) {
 function resetWinner(game) {
   game.human.gameWon = false;
   game.robot.gameWon = false;
+}
+
+function testDelegation() {
+  console.log('working')
 }
