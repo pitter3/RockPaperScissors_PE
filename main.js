@@ -90,3 +90,12 @@ function updateScores(game) {
   }
   return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
 }
+
+// DOM MANIPULATION
+
+/* <img class="selector-image" id="Rock" src="./assets/Rock.png">
+<img class="selector-image" id="Paper" src="./assets/Paper.png">
+<img class="selector-image" id="Scissors" src="./assets/Scissors.png"> */
+
+// INSERT THESE TO HTML WHEN USER CLICKS A GAME TYPE
+

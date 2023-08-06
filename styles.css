@@ -43,7 +43,11 @@ h1 {
 }
 
 .play-zone {
+  display: flex;
+  flex-direction: column;
   height: 72%;
+  align-items: center;
+  justify-content: center;
 }
   
 .image {
@@ -58,4 +62,10 @@ h1 {
   cursor: pointer;
   height: 90px;
   width: 90px;
+}
+
+.game-selection {
+  cursor: pointer;
+  height: 250px;
+  width: 250px;
 }
