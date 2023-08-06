@@ -2,6 +2,7 @@
 
 var selectionButtons = document.querySelectorAll(".selector-image");
 var playZone = document.querySelector(".play-zone")
+var resultSection = document.querySelector(".result-section")
 
 // EVENT LISTENERS
 playZone.addEventListener("click", function(event) {
@@ -114,8 +115,11 @@ function launchGame(event) {
 }
 
 function launchClassic() {
-  playZone.innerHTML = "";
-  playZone.innerHTML += '<img class="selector-image" id="Rock" src="./assets/Rock.png">' +
+  playZone.innerHTML = ""; // do we need these??
+  resultSection.innerText = "";
+  playZone.innerHTML += 
+    '<img class="selector-image" id="Rock" src="./assets/Rock.png">' +
     '<img class="selector-image" id="Paper" src="./assets/Paper.png">' +
     '<img class="selector-image" id="Scissors" src="./assets/Scissors.png">';
+  resultSection.innerText = "Choose your fighter!"
 }
