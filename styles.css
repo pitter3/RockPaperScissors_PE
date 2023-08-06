@@ -53,3 +53,9 @@ h1 {
 .score-counter {
   height: 35px;
 }
+
+.selector-image {
+  cursor: pointer;
+  height: 90px;
+  width: 90px;
+}
