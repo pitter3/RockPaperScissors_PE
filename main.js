@@ -4,7 +4,6 @@ var selectionButtons = document.querySelectorAll(".selector-image");
 var playZone = document.querySelector(".play-zone")
 
 // EVENT LISTENERS
-
 playZone.addEventListener("click", function(event) {
   if (event.target.classList.contains("selector-image")) {
     var humanSelection = getHumanSelection(event);
@@ -13,10 +12,11 @@ playZone.addEventListener("click", function(event) {
     var robotPlayer = createPlayer("Robot", robotSelection);
     var game = createGame(humanPlayer, robotPlayer);
     console.log(gameResult(game));
-    updateScores(game);
-    resetWinner(game);
+    updateScores(game); // clean this all up condense to 1 function
+    // resetWinner(game);
   }
 });
+
 
 
 // DATA MODEL
@@ -82,17 +82,11 @@ function gameResult(game) {
 function updateScores(game) {
   if (game.human.gameWon === true) {
     humanScore++
-    return humanScore
+    return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
   }
   if (game.robot.gameWon === true) {
     robotScore++
-    return robotScore
+    return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
   }
   return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
 }
-
-function resetWinner(game) {
-  game.human.gameWon = false;
-  game.robot.gameWon = false;
-}
-
