@@ -104,3 +104,18 @@ function updateScores(game) {
 
 // INSERT THESE TO HTML WHEN USER CLICKS A GAME TYPE
 
+function launchGame(event) {
+  if (event.target.id = 'classic') {
+    launchClassic();
+  }
+  // if (event.target.id = 'difficult') {
+  //   launchDifficult();
+  // }
+}
+
+function launchClassic() {
+  playZone.innerHTML = "";
+  playZone.innerHTML += '<img class="selector-image" id="Rock" src="./assets/Rock.png">' +
+    '<img class="selector-image" id="Paper" src="./assets/Paper.png">' +
+    '<img class="selector-image" id="Scissors" src="./assets/Scissors.png">';
+}
