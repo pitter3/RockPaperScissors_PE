@@ -67,5 +67,6 @@ h1 {
 .game-selection {
   cursor: pointer;
   height: 250px;
-  width: 250px;
+  width: 350px;
+  white-space: pre-wrap;
 }

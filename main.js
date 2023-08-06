@@ -15,7 +15,12 @@ playZone.addEventListener("click", function(event) {
     updateScores(game); // clean this all up condense to 1 function
     // resetWinner(game);
   }
+  if (event.target.classList.contains("game-selection")) {
+    launchGame(event);
+  }
 });
+
+
 
 
 
