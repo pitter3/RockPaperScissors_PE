@@ -12,23 +12,35 @@
     <aside class="human-section">
         <section class="side-container">
             <p class="image">🧠</p>
-            <p class="score-counter">Wins: 0</p>
+            <p class="score-counter" id="human-wins">Wins: 0</p>
         </section>
-        <button>CHANGE GAME?</button>
+        <!-- Change Game Button Here -->
     </aside>
     <main>
         <h1>Rock, Paper, Scissors</h1>
-        <section class="result-section">Choose your fighter!</section>
+        <section class="result-section" id="classic">Choose your game!</section>
         <section class="play-zone">
-            <img class="selector-image" id="Rock" src="./assets/Rock.png">
-            <img class="selector-image" id="Paper" src="./assets/Paper.png">
-            <img class="selector-image" id="Scissors" src="./assets/Scissors.png">
+            <section class ="game-selection">
+                CLASSIC
+                
+                Rock > Scissors
+                Paper > Rock
+                Scissors > Paper
+            </section>
+            <section class ="game-selection" id="difficult">
+                DIFFICULT
+                
+                Rock > Scissors & Something
+                Paper > Rock & Something
+                Scissors > Paper & Something
+            </section>
+            <!-- Rock, Paper, and Scissor Images Here-->
         </section>
     </main>
     <aside class="robot-section">
         <section class="side-container">
             <p class="image">🤖</p>
-            <p class="score-counter">Wins: 0</p>
+            <p class="score-counter" id="robot-wins">Wins: 0</p>
         </section>
     </aside>
     <script type="text/javascript" src="main.js"></script>
