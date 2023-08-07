@@ -10,25 +10,27 @@ var robotScores = document.querySelector("#robot-wins");
 // EVENT LISTENERS
 playZone.addEventListener("click", function(event) {
   if (event.target.classList.contains("selector-image")) {
-    var humanSelection = getHumanSelection(event);
-    var robotSelection = getRobotSelection();
-    renderHumanSelection(event);
-    renderRobotSelection(robotSelection);
-    var humanPlayer = createPlayer("Patrick", humanSelection);
-    var robotPlayer = createPlayer("Robot", robotSelection);
-    var game = createGame(humanPlayer, robotPlayer);
-    var resultMessage = gameResult(game);
-    renderWinner(resultMessage);
-    updateScores(game); // clean this all up condense to 1 function
-    // resetWinner(game);
+    playRound(event);
   }
   if (event.target.classList.contains("game-selection")) {
     launchGame(event);
   }
 });
 
+function playRound(event) {
+  var humanSelection = getHumanSelection(event);
+  var robotSelection = getRobotSelection();
 
+  renderHumanSelection(event);
+  renderRobotSelection(robotSelection);
 
+  var humanPlayer = createPlayer("Patrick", humanSelection);
+  var robotPlayer = createPlayer("Robot", robotSelection);
+  var game = createGame(humanPlayer, robotPlayer);
+  var resultMessage = gameResult(game);
+  renderWinner(resultMessage);
+  updateScores(game);
+}
 
 
 // DATA MODEL
