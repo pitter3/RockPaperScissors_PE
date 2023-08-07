@@ -1,8 +1,9 @@
 // QUERY SELECTORS
 
 var selectionButtons = document.querySelectorAll(".selector-image");
-var playZone = document.querySelector(".play-zone")
-var resultSection = document.querySelector(".result-section")
+var playZone = document.querySelector(".play-zone");
+var resultSection = document.querySelector(".result-section");
+var humanSection = document.querySelector(".human-section");
 
 // EVENT LISTENERS
 playZone.addEventListener("click", function(event) {
@@ -115,6 +116,7 @@ function launchGame(event) {
 }
 
 function launchClassic() {
+  
   playZone.innerHTML = ""; // do we need these??
   resultSection.innerText = "";
   playZone.innerHTML += 
@@ -122,4 +124,11 @@ function launchClassic() {
     '<img class="selector-image" id="Paper" src="./assets/Paper.png">' +
     '<img class="selector-image" id="Scissors" src="./assets/Scissors.png">';
   resultSection.innerText = "Choose your fighter!"
+  showChangeGameButton();
+}
+
+function showChangeGameButton() {
+  var changeGameButton = document.createElement('button');
+  changeGameButton.textContent = 'CHANGE GAME?';
+  humanSection.appendChild(changeGameButton);
 }
