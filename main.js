@@ -11,6 +11,7 @@ var robotScores = document.querySelector("#robot-wins");
 playZone.addEventListener("click", function(event) {
   if (event.target.classList.contains("selector-image")) {
     playRound(event);
+    renderComputerChoosing();
   }
   if (event.target.classList.contains("game-selection")) {
     launchGame(event);
@@ -19,17 +20,20 @@ playZone.addEventListener("click", function(event) {
 
 function playRound(event) {
   var humanSelection = getHumanSelection(event);
-  var robotSelection = getRobotSelection();
-
+  
   renderHumanSelection(event);
-  renderRobotSelection(robotSelection);
 
-  var humanPlayer = createPlayer("Patrick", humanSelection);
-  var robotPlayer = createPlayer("Robot", robotSelection);
-  var game = createGame(humanPlayer, robotPlayer);
-  var resultMessage = gameResult(game);
-  renderWinner(resultMessage);
-  updateScores(game);
+  setTimeout(function() {
+    var robotSelection = getRobotSelection();
+    renderRobotSelection(robotSelection);
+
+    var humanPlayer = createPlayer("Human", humanSelection);
+    var robotPlayer = createPlayer("Robot", robotSelection);
+    var game = createGame(humanPlayer, robotPlayer);
+    var resultMessage = gameResult(game);
+    renderWinner(resultMessage);
+    updateScores(game);
+  }, 2000);
 }
 
 
@@ -160,4 +164,8 @@ function renderRobotSelection(robotSelection) {
   robotSelectionImg.id = robotSelection;
   robotSelectionImg.src = `./assets/${robotSelection}.png`;
   playZone.appendChild(robotSelectionImg);
+}
+
+function renderComputerChoosing() {
+  resultSection.innerText = 'Computer is choosing...';
 }
