@@ -13,10 +13,12 @@ playZone.addEventListener("click", function(event) {
     var humanSelection = getHumanSelection(event);
     var robotSelection = getRobotSelection();
     renderHumanSelection(event);
+    renderRobotSelection(robotSelection);
     var humanPlayer = createPlayer("Patrick", humanSelection);
     var robotPlayer = createPlayer("Robot", robotSelection);
     var game = createGame(humanPlayer, robotPlayer);
-    console.log(gameResult(game));
+    var resultMessage = gameResult(game);
+    renderWinner(resultMessage);
     updateScores(game); // clean this all up condense to 1 function
     // resetWinner(game);
   }
@@ -71,7 +73,7 @@ function createGame(human, robot) {
 
 function gameResult(game) {
   if (game.human.selection === game.robot.selection) {
-    return `You both picked ${game.human.selection} It's a Draw!!`
+    return ` DRAW! You both picked ${game.human.selection}`
   }
   if (game.human.selection === 'Rock' && game.robot.selection === 'Scissors') {
     game.human.gameWon = true
@@ -86,7 +88,7 @@ function gameResult(game) {
     return `You win! ${game.human.selection} beats ${game.robot.selection}!`
   }
     game.robot.gameWon = true
-    return `You lose :( ${game.robot.selection} beats ${game.human.selection}!`
+    return `You lost :( ${game.human.selection} loses to ${game.robot.selection}!`
   }
 
 function updateScores(game) {
@@ -137,6 +139,10 @@ function renderWins() {
   robotScores.innerText = `Wins: ${robotScore}`
 }
 
+function renderWinner(resultMessage) {
+  resultSection.innerText = resultMessage;
+}
+
 function renderHumanSelection(event) {
   var humanSelectionImg = document.createElement('img');
   humanSelectionImg.classList.add('selector-image');
@@ -144,4 +150,12 @@ function renderHumanSelection(event) {
   humanSelectionImg.src = `./assets/${event.target.id}.png`;
   playZone.innerHTML = ""
   playZone.appendChild(humanSelectionImg);
+}
+
+function renderRobotSelection(robotSelection) {
+  var robotSelectionImg = document.createElement('img');
+  robotSelectionImg.classList.add('selector-image');
+  robotSelectionImg.id = robotSelection;
+  robotSelectionImg.src = `./assets/${robotSelection}.png`;
+  playZone.appendChild(robotSelectionImg);
 }
