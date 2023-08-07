@@ -101,14 +101,14 @@ function updateScores(game) {
   if (game.human.gameWon === true) {
     humanScore++
     renderWins();
-    return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
   }
   if (game.robot.gameWon === true) {
     robotScore++
     renderWins();
-    return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
   }
-  return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
+  setTimeout(function() {
+    launchClassic();
+  }, 2000);
 }
 
 // DOM MANIPULATION
