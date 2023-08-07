@@ -4,12 +4,15 @@ var selectionButtons = document.querySelectorAll(".selector-image");
 var playZone = document.querySelector(".play-zone");
 var resultSection = document.querySelector(".result-section");
 var humanSection = document.querySelector(".human-section");
+var humanScores = document.querySelector("#human-wins");
+var robotScores = document.querySelector("#robot-wins");
 
 // EVENT LISTENERS
 playZone.addEventListener("click", function(event) {
   if (event.target.classList.contains("selector-image")) {
     var humanSelection = getHumanSelection(event);
     var robotSelection = getRobotSelection();
+    renderHumanSelection(event);
     var humanPlayer = createPlayer("Patrick", humanSelection);
     var robotPlayer = createPlayer("Robot", robotSelection);
     var game = createGame(humanPlayer, robotPlayer);
@@ -89,22 +92,18 @@ function gameResult(game) {
 function updateScores(game) {
   if (game.human.gameWon === true) {
     humanScore++
+    renderWins();
     return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
   }
   if (game.robot.gameWon === true) {
     robotScore++
+    renderWins();
     return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
   }
   return console.log(`Human Score is:`, humanScore, `Robot Score is`, robotScore)
 }
 
 // DOM MANIPULATION
-
-/* <img class="selector-image" id="Rock" src="./assets/Rock.png">
-<img class="selector-image" id="Paper" src="./assets/Paper.png">
-<img class="selector-image" id="Scissors" src="./assets/Scissors.png"> */
-
-// INSERT THESE TO HTML WHEN USER CLICKS A GAME TYPE
 
 function launchGame(event) {
   if (event.target.id = 'classic') {
@@ -129,6 +128,20 @@ function launchClassic() {
 
 function showChangeGameButton() {
   var changeGameButton = document.createElement('button');
-  changeGameButton.textContent = 'CHANGE GAME?';
+  changeGameButton.innerHTML = 'CHANGE GAME?';
   humanSection.appendChild(changeGameButton);
+}
+
+function renderWins() {
+  humanScores.innerText = `Wins: ${humanScore}`
+  robotScores.innerText = `Wins: ${robotScore}`
+}
+
+function renderHumanSelection(event) {
+  var humanSelectionImg = document.createElement('img');
+  humanSelectionImg.classList.add('selector-image');
+  humanSelectionImg.id = event.target.id;
+  humanSelectionImg.src = `./assets/${event.target.id}.png`;
+  playZone.innerHTML = ""
+  playZone.appendChild(humanSelectionImg);
 }
