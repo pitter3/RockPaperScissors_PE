@@ -7,6 +7,7 @@ var humanSection = document.querySelector(".human-section");
 var humanScores = document.querySelector("#human-wins");
 var robotScores = document.querySelector("#robot-wins");
 var selectorContainer = document.querySelector(".selector-container")
+var changeGameWrapper = document.querySelector(".change-game-wrapper");
 
 
 // DATA MODEL
@@ -199,40 +200,13 @@ function renderComputerChoosing() {
   resultSection.innerText = 'Robot is choosing...';
 }
 
-// function backToGameSelection() {
-//   changeGameButtonCreated = false;
-//   playZone.innerHTML = `
-//     <section class="game-selection">
-//       CLASSIC
-      
-//       Rock > Scissors
-//       Paper > Rock
-//       Scissors > Paper
-//     </section>
-//     <section class="game-selection" id="difficult">
-//       DIFFICULT
-      
-//       Rock > Scissors & Something
-//       Paper > Rock & Something
-//       Scissors > Paper & Something
-//     </section>
-//     <!-- Rock, Paper, and Scissor Images Here -->
-//   `;
-//   resultSection.innerHTML = `Choose your game!`
-//   humanSection.innerHTML = `        <section class="side-container">
-//   <p class="image">🧠 Human</p>
-//   <p class="score-counter" id="human-wins">Wins: ${humanScore} </p>
-// </section>
-// <!-- Change Game Button Here -->`
-// }
-
-// function showChangeGameButton() { // rename this... it is CREATING the button, not showing it
-//   var changeGameButton = document.createElement('button');
-//   changeGameButton.innerHTML = 'CHANGE GAME?';
-//   changeGameButton.id = 'change-game-button';
-//   humanSection.appendChild(changeGameButton);
-//   changeGameButtonCreated = true;
-// }
+function createChangeGameButton() { // rename this... it is CREATING the button, not showing it
+  var changeGameButton = document.createElement('button');
+  changeGameButton.innerHTML = 'CHANGE GAME?';
+  changeGameButton.id = 'change-game-button';
+  changeGameWrapper.appendChild(changeGameButton);
+  changeGameButtonCreated = true;
+}
 
 // humanSection.addEventListener("click", function(event) {
 //   if (event.target.id === "change-game-button") {

@@ -1,5 +1,5 @@
 * {
-    /* border: 1px solid green; */
+    border: 1px solid green;
     margin: 5px;
 }
 
@@ -101,4 +101,11 @@ button {
 .play-zone-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.change-game-wrapper {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
 }
