@@ -187,11 +187,11 @@ function delayLaunch() {
 
 
 function renderWins() {
-  humanScores.innerText = `Wins: ${humanScore}` //bug
+  humanScores.innerText = `Wins: ${humanScore}`
   robotScores.innerText = `Wins: ${robotScore}`
 }
 
-function renderWinner(resultMessage) { // rename this
+function renderWinner(resultMessage) {
   resultSection.innerText = resultMessage;
 }
 
