@@ -58,6 +58,8 @@ function playRound(event) {
     renderSelection(robotSelection, false);
     renderWinner(resultMessage);
     updateScores(game);
+    renderWins();
+    delayLaunch();
   }, 1500);
 }
 
@@ -83,7 +85,6 @@ function getRobotSelection() {
   } else {
     var selectionChoices = ["Rock", "Paper", "Scissors"];
   }
-  
   return selectionChoices[Math.floor(Math.random() * selectionChoices.length)];
 }
 
@@ -123,13 +124,11 @@ function gameResult(game) {
 
 function updateScores(game) {
   if (game.human.gameWon === true) {
-    humanScore++
+    humanScore++;
   }
   if (game.robot.gameWon === true) {
-    robotScore++
+    robotScore++;
   }
-  renderWins();
-  delayLaunch();
 }
 
 // DOM MANIPULATION
@@ -176,7 +175,6 @@ function launchDifficult() {
 }
 
 function delayLaunch() {
-  var delayTime = 850;
   setTimeout(function() {
     if (difficultMode) {
       launchDifficult();
@@ -184,7 +182,7 @@ function delayLaunch() {
       launchClassic();
     }
     gameInProgress = false;
-  }, delayTime);
+  }, 850);
 }
 
 
