@@ -20,6 +20,12 @@ playZone.addEventListener("click", function(event) {
 });
 
 function playRound(event) {
+  if (gameInProgress) {
+    return; 
+  }
+
+  gameInProgress = true;
+
   var humanSelection = getHumanSelection(event);
   
   renderHumanSelection(event);
@@ -34,8 +40,11 @@ function playRound(event) {
     var resultMessage = gameResult(game);
     renderWinner(resultMessage);
     updateScores(game);
+
+    gameInProgress = false; // Reset the flag after the round is complete
   }, 2000);
 }
+
 
 
 // DATA MODEL
@@ -43,6 +52,7 @@ function playRound(event) {
 var humanScore = 0;
 var robotScore = 0;
 var changeGameButtonCreated = false;
+var gameInProgress = false;
 
 
 // GAME LOGIC
