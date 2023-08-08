@@ -106,12 +106,11 @@ function updateScores(game) {
     robotScore++
     renderWins();
   }
-  setTimeout(function() {
-    launchClassic();
-  }, 2000);
+  delayLaunchClassic();
 }
 
 // DOM MANIPULATION
+
 
 function launchGame(event) {
   if (event.target.id = 'classic') {
@@ -133,6 +132,10 @@ function launchClassic() {
   resultSection.innerText = "Choose your fighter!"
   showChangeGameButton();
 }
+
+function delayLaunchClassic() {
+  setTimeout(launchClassic, 2000);
+} // this will need to be dynamic and work for difficult as well as classic.
 
 function showChangeGameButton() {
   var changeGameButton = document.createElement('button');
