@@ -8,6 +8,7 @@ var humanScores = document.querySelector("#human-wins");
 var robotScores = document.querySelector("#robot-wins");
 var selectorContainer = document.querySelector(".selector-container")
 var changeGameWrapper = document.querySelector(".change-game-wrapper");
+var playZoneWrapper = document.querySelector(".play-zone-wrapper")
 
 
 // DATA MODEL
@@ -29,6 +30,11 @@ playZone.addEventListener("click", function(event) {
     playRound(event);
     renderComputerChoosing();
   }
+});
+
+changeGameWrapper.addEventListener("click", function(event) {
+backToHomePage();
+console.log('clicked')
 });
 
  
@@ -214,12 +220,25 @@ function createChangeGameButton() { // rename this... it is CREATING the button,
   changeGameButtonCreated = true;
 }
 
-// humanSection.addEventListener("click", function(event) {
-//   if (event.target.id === "change-game-button") {
-//     backToGameSelection();
-//   }
-// });
-
-// if (!changeGameButtonCreated) {
-//   showChangeGameButton();
-// }
+function backToHomePage() {
+  playZone.innerHTML = `
+  <div class="play-zone-wrapper">
+  <section class ="game-selection" id="classic">
+  CLASSIC
+  
+  Rock > Scissors
+  Paper > Rock
+  Scissors > Paper
+  </section>
+  <section class ="game-selection" id="difficult">
+  DIFFICULT
+  
+  Rock > Scissors & Devil
+  Paper > Rock & Spock
+  Scissors > Paper & Devil
+  Spock > Rock & Scissors
+  Devil > Spock & Paper
+  </section>
+  </div>
+  `;
+}
