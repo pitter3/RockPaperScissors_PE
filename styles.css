@@ -83,7 +83,19 @@ h1 {
 }
 
 button {
+
+  background-color: black;
+  color: white;
+  height: 50px;
+  border-radius: 25px;
+  width: 160px;
+  font-weight: bolder;
+  border: none;
+}
+
+button:hover {
   cursor: pointer;
+  background-color: rgb(84, 82, 82);
 }
 
 .game-selection {
@@ -101,4 +113,11 @@ button {
 .play-zone-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.change-game-wrapper {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
 }
