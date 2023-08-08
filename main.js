@@ -34,7 +34,6 @@ playZone.addEventListener("click", function(event) {
 
 changeGameWrapper.addEventListener("click", function(event) {
 backToHomePage();
-console.log('clicked')
 });
 
  
@@ -188,7 +187,6 @@ function delayLaunchClassic() {
 
 
 function renderWins() {
-  console.log(humanScore, robotScore)
   humanScores.innerText = `Wins: ${humanScore}` //bug
   robotScores.innerText = `Wins: ${robotScore}`
 }
