@@ -50,7 +50,7 @@ function playRound(event) {
     renderSelection(robotSelection, false);
     renderWinner(resultMessage);
     updateScores(game); // remove nested functions
-    gameInProgress = false;
+  
   }, 2000);
 }
 
@@ -159,10 +159,9 @@ function launchDifficult() {
 function delayLaunchClassic() {
   setTimeout(function() {
      launchClassic();
-  }, 1500);
+     gameInProgress = false;
+  }, 850);
 } // this will need to be dynamic and work for difficult as well as classic.
-
-
 
 function renderWins() {
   console.log(humanScore, robotScore)
