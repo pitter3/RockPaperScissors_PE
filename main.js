@@ -19,12 +19,12 @@ var gameInProgress = false;
 // EVENT LISTENERS
 
 playZone.addEventListener("click", function(event) {
+  if (event.target.classList.contains("game-selection")) {
+    launchGame(event);
+  }
   if (event.target.classList.contains("selector-image")) {
     playRound(event);
     renderComputerChoosing();
-  }
-  if (event.target.classList.contains("game-selection")) {
-    launchGame(event);
   }
 });
 
