@@ -8,7 +8,7 @@ var humanScores = document.querySelector("#human-wins");
 var robotScores = document.querySelector("#robot-wins");
 var selectorContainer = document.querySelector(".selector-container")
 var changeGameWrapper = document.querySelector(".change-game-wrapper");
-var playZoneWrapper = document.querySelector(".play-zone-wrapper")
+
 
 
 // DATA MODEL
@@ -33,7 +33,9 @@ playZone.addEventListener("click", function(event) {
 });
 
 changeGameWrapper.addEventListener("click", function(event) {
-backToHomePage();
+  if (event.target.id === "change-game-button") {
+    backToHomePage();
+  } 
 });
 
  
@@ -239,4 +241,6 @@ function backToHomePage() {
   </section>
   </div>
   `;
+  changeGameWrapper.innerText = "";
+  changeGameButtonCreated = false;
 }
