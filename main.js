@@ -139,6 +139,9 @@ function launchGame(event) {
 }
 
 function launchClassic() {
+  if (!changeGameButtonCreated) {
+    createChangeGameButton();
+  }
   playZone.innerHTML = "";
   playZone.innerHTML += 
     `
@@ -150,6 +153,9 @@ function launchClassic() {
 }
 
 function launchDifficult() {
+  if (!changeGameButtonCreated) {
+    createChangeGameButton();
+  }
   playZone.innerHTML = "";
   playZone.innerHTML += 
     `
