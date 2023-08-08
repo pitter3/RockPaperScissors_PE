@@ -8,6 +8,7 @@ var humanScores = document.querySelector("#human-wins");
 var robotScores = document.querySelector("#robot-wins");
 
 // EVENT LISTENERS
+
 playZone.addEventListener("click", function(event) {
   if (event.target.classList.contains("selector-image")) {
     playRound(event);
@@ -125,12 +126,13 @@ function launchGame(event) {
 function launchClassic() {
   
   playZone.innerHTML = "";
-  resultSection.innerText = "";
+  // resultSection.innerText = "";
   playZone.innerHTML += 
     '<img class="selector-image" id="Rock" src="./assets/Rock.png">' +
     '<img class="selector-image" id="Paper" src="./assets/Paper.png">' +
     '<img class="selector-image" id="Scissors" src="./assets/Scissors.png">';
-  resultSection.innerText = "Choose your fighter!"
+  // resultSection.innerText = "Choose your fighter!"
+  renderWinner("Choose your fighter!")
   if (!changeGameButtonCreated) {
     showChangeGameButton();
   }
@@ -154,7 +156,7 @@ function renderWins() {
   robotScores.innerText = `Wins: ${robotScore}`
 }
 
-function renderWinner(resultMessage) {
+function renderWinner(resultMessage) { // rename this
   resultSection.innerText = resultMessage;
 }
 
