@@ -46,7 +46,7 @@ function playRound(event) {
     return; 
   }
   gameInProgress = true;
-  var humanSelection = getHumanSelection(event);   // renderHumanSelection(event); // pass in event.target.id only?
+  var humanSelection = getHumanSelection(event);
   var robotSelection = getRobotSelection();
   var humanPlayer = createPlayer("Human", humanSelection);
   var robotPlayer = createPlayer("Robot", robotSelection);
@@ -57,8 +57,8 @@ function playRound(event) {
   setTimeout(function() {
     renderSelection(robotSelection, false);
     renderWinner(resultMessage);
-    updateScores(game); // remove nested functions
-  }, 2000);
+    updateScores(game);
+  }, 1500);
 }
 
 
@@ -128,8 +128,8 @@ function updateScores(game) {
   if (game.robot.gameWon === true) {
     robotScore++
   }
-  renderWins(); //bug
-  delayLaunchClassic();
+  renderWins();
+  delayLaunch();
 }
 
 // DOM MANIPULATION
@@ -175,7 +175,7 @@ function launchDifficult() {
   renderWinner("Difficult Mode -- Choose your fighter!")
 }
 
-function delayLaunchClassic() {
+function delayLaunch() {
   var delayTime = 850;
   setTimeout(function() {
     if (difficultMode) {

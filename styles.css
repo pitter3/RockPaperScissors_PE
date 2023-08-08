@@ -1,5 +1,5 @@
 * {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     margin: 5px;
 }
 
@@ -83,7 +83,19 @@ h1 {
 }
 
 button {
+
+  background-color: black;
+  color: white;
+  height: 50px;
+  border-radius: 25px;
+  width: 160px;
+  font-weight: bolder;
+  border: none;
+}
+
+button:hover {
   cursor: pointer;
+  background-color: rgb(84, 82, 82);
 }
 
 .game-selection {
