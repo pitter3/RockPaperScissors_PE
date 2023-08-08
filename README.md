@@ -7,7 +7,8 @@ Challenge a robot in a game of Rock, Paper, Scissors! Enjoy either classic mode 
 No need to install! View here - [GitHub Pages](https://pitter3.github.io/RockPaperScissors_PE)
 
 ## Preview of App:
-![gif]()
+![RPSREADME](https://github.com/pitter3/RockPaperScissors_PE/assets/134596035/bd686839-0d9a-4ad4-ad1e-27f1c13f7979)
+
 
 ## Context:
 This is my final project of Mod 1 at Turing School of Software & Design. We were given ~1 week to create this project from scratch using a provided comp found [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html).
@@ -33,3 +34,5 @@ This is my final project of Mod 1 at Turing School of Software & Design. We were
 - Refactoring code after it is already working feels like you are taking one step fowards and two steps back sometimes.
 - A handful of bugs required me to declare global variables to fix, I couldn't find a cleaner way to fix these issues.
 - Time. Management. There were a handful of things going on for me this weekend and striking a balance proved very diffiuclt.
+- Following the Git Workflow was at times challenging with my time contraints this weekend, I still did the best I could!
+- Getting some images to display on GitHub pages was very difficult as I didn't realize case sensitivity is a factor.
