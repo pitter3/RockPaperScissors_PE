@@ -135,7 +135,7 @@ function launchClassic() {
 
 function delayLaunchClassic() {
   setTimeout(launchClassic, 2000);
-} // this will need to be dynamic and work for difficult as well!
+} // this will need to be dynamic and work for difficult as well as classic.
 
 function showChangeGameButton() {
   var changeGameButton = document.createElement('button');
