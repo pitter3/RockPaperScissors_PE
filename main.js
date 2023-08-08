@@ -131,14 +131,14 @@ function launchClassic() {
     '<img class="selector-image" id="Paper" src="./assets/Paper.png">' +
     '<img class="selector-image" id="Scissors" src="./assets/Scissors.png">';
   resultSection.innerText = "Choose your fighter!"
-  showChangeGameButton();
+  if (!changeGameButtonCreated) {
+    showChangeGameButton();
+  }
 }
 
 function delayLaunchClassic() {
   setTimeout(function() {
-    if (!changeGameButtonCreated) {
-      launchClassic();
-    }
+     launchClassic();
   }, 2000);
 } // this will need to be dynamic and work for difficult as well as classic.
 
