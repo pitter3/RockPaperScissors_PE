@@ -6,6 +6,7 @@ var resultSection = document.querySelector(".result-section");
 var humanSection = document.querySelector(".human-section");
 var humanScores = document.querySelector("#human-wins");
 var robotScores = document.querySelector("#robot-wins");
+var selectorContainer = document.querySelector(".selector-container")
 
 
 // DATA MODEL
@@ -14,6 +15,7 @@ var humanScore = 0;
 var robotScore = 0;
 var changeGameButtonCreated = false;
 var gameInProgress = false;
+var difficultMode = false;
 
 
 // EVENT LISTENERS
@@ -48,7 +50,6 @@ function playRound(event) {
     renderSelection(robotSelection, false);
     renderWinner(resultMessage);
     updateScores(game); // remove nested functions
-    gameInProgress = false; // Reset the flag after the round is complete
   }, 2000);
 }
 
@@ -69,7 +70,12 @@ function getHumanSelection(event) {
 }
 
 function getRobotSelection() {
-  var selectionChoices = ["Rock", "Paper", "Scissors"];
+  if (difficultMode === true) {
+    var selectionChoices = ["Rock", "Paper", "Scissors", "Spock", "Devil"];
+  } else {
+    var selectionChoices = ["Rock", "Paper", "Scissors"];
+  }
+  
   return selectionChoices[Math.floor(Math.random() * selectionChoices.length)];
 }
 
@@ -89,23 +95,23 @@ function createGame(human, robot) {
 
 function gameResult(game) {
   if (game.human.selection === game.robot.selection) {
-    return ` DRAW! You both picked ${game.human.selection}`
+    return ` DRAW! You both picked ${game.human.selection}`;
   }
-  if (game.human.selection === 'Rock' && game.robot.selection === 'Scissors') {
-    game.human.gameWon = true
-    return `You win! ${game.human.selection} beats ${game.robot.selection}!`
+  
+  if (
+    (game.human.selection === 'Rock' && (game.robot.selection === 'Scissors' || game.robot.selection === 'Devil')) ||
+    (game.human.selection === 'Paper' && (game.robot.selection === 'Rock' || game.robot.selection === 'Spock')) ||
+    (game.human.selection === 'Scissors' && (game.robot.selection === 'Paper' || game.robot.selection === 'Devil')) ||
+    (game.human.selection === 'Spock' && (game.robot.selection === 'Rock' || game.robot.selection === 'Scissors')) ||
+    (game.human.selection === 'Devil' && (game.robot.selection === 'Spock' || game.robot.selection === 'Paper'))
+  ) {
+    game.human.gameWon = true;
+    return `You win! ${game.human.selection} beats ${game.robot.selection}!`;
   }
-  if (game.human.selection === 'Paper' && game.robot.selection === 'Rock') {
-    game.human.gameWon = true
-    return `You win! ${game.human.selection} beats ${game.robot.selection}!`
-  }
-  if (game.human.selection === 'Scissors' && game.robot.selection === 'Paper') {
-    game.human.gameWon = true
-    return `You win! ${game.human.selection} beats ${game.robot.selection}!`
-  }
-    game.robot.gameWon = true
-    return `You lost :( ${game.human.selection} loses to ${game.robot.selection}!`
-  }
+
+  game.robot.gameWon = true;
+  return `You lost :( ${game.human.selection} loses to ${game.robot.selection}!`;
+}
 
 function updateScores(game) {
   if (game.human.gameWon === true) {
@@ -114,7 +120,6 @@ function updateScores(game) {
   if (game.robot.gameWon === true) {
     robotScore++
   }
-  console.log("test")
   renderWins(); //bug
   delayLaunchClassic();
 }
@@ -123,32 +128,50 @@ function updateScores(game) {
 
 
 function launchGame(event) {
-  if (event.target.id = 'classic') {
+  if (event.target.id === 'classic') {
     launchClassic();
   }
-  // if (event.target.id = 'difficult') {
-  //   launchDifficult();
-  // }
+  if (event.target.id === 'difficult') {
+    difficultMode = true;
+    launchDifficult();
+  }
 }
 
 function launchClassic() {
-  
   playZone.innerHTML = "";
-  // resultSection.innerText = "";
   playZone.innerHTML += 
-    `<img class="selector-image" id="Rock" src="./assets/Rock.png"> 
+    `
+    <img class="selector-image" id="Rock" src="./assets/Rock.png"> 
     <img class="selector-image" id="Paper" src="./assets/Paper.png">
-    <img class="selector-image" id="Scissors" src="./assets/Scissors.png">`;
-  // resultSection.innerText = "Choose your fighter!"
+    <img class="selector-image" id="Scissors" src="./assets/Scissors.png">
+    `;
   renderWinner("Choose your fighter!")
 }
 
-function delayLaunchClassic() {
-  setTimeout(function() {
-     launchClassic();
-  }, 2000);
-} // this will need to be dynamic and work for difficult as well as classic.
+function launchDifficult() {
+  playZone.innerHTML = "";
+  playZone.innerHTML += 
+    `
+    <img class="selector-image" id="Rock" src="./assets/Rock.png"> 
+    <img class="selector-image" id="Paper" src="./assets/Paper.png">
+    <img class="selector-image" id="Scissors" src="./assets/Scissors.png">
+    <img class="selector-image" id="Spock" src="./assets/SPOCK.png">
+    <img class="selector-image" id="Devil" src="./assets/Devil.png">
+    `
+  renderWinner("Difficult Mode -- Choose your fighter!")
+}
 
+function delayLaunchClassic() {
+  var delayTime = 850;
+  setTimeout(function() {
+    if (difficultMode) {
+      launchDifficult();
+    } else {
+      launchClassic();
+    }
+    gameInProgress = false;
+  }, delayTime);
+}
 
 
 function renderWins() {
@@ -159,23 +182,6 @@ function renderWins() {
 
 function renderWinner(resultMessage) { // rename this
   resultSection.innerText = resultMessage;
-}
-
-function renderHumanSelection(event) {
-  var humanSelectionImg = document.createElement('img');
-  humanSelectionImg.classList.add('selector-image');
-  humanSelectionImg.id = event.target.id;
-  humanSelectionImg.src = `./assets/${event.target.id}.png`;
-  playZone.innerHTML = ""
-  playZone.appendChild(humanSelectionImg);
-}
-
-function renderRobotSelection(robotSelection) {
-  var robotSelectionImg = document.createElement('img');
-  robotSelectionImg.classList.add('selector-image');
-  robotSelectionImg.id = robotSelection;
-  robotSelectionImg.src = `./assets/${robotSelection}.png`;
-  playZone.appendChild(robotSelectionImg);
 }
 
 function renderSelection(selection, resetField) {
