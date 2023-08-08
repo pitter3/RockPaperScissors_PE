@@ -233,7 +233,7 @@ function backToGameSelection() {
   `;
   resultSection.innerHTML = `Choose your game!`
   humanSection.innerHTML = `        <section class="side-container">
-  <p class="image">🧠</p>
+  <p class="image">🧠 Human</p>
   <p class="score-counter" id="human-wins">Wins: ${humanScore} </p>
 </section>
 <!-- Change Game Button Here -->`
