@@ -71,3 +71,6 @@ h1 {
   white-space: pre-wrap;
 }
 
+button {
+  cursor: pointer;
+}

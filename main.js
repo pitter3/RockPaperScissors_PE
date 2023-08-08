@@ -19,6 +19,12 @@ playZone.addEventListener("click", function(event) {
   }
 });
 
+humanSection.addEventListener("click", function(event) {
+  if (event.target.id === "change-game-button") {
+    backToGameSelection();
+  }
+});
+
 function playRound(event) {
   if (gameInProgress) {
     return; 
@@ -157,6 +163,7 @@ function delayLaunchClassic() {
 function showChangeGameButton() { // rename this... it is CREATING the button, not showing it
   var changeGameButton = document.createElement('button');
   changeGameButton.innerHTML = 'CHANGE GAME?';
+  changeGameButton.id = 'change-game-button';
   humanSection.appendChild(changeGameButton);
   changeGameButtonCreated = true;
 }
