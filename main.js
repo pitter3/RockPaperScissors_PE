@@ -139,6 +139,7 @@ function delayLaunchClassic() {
 
 function showChangeGameButton() {
   var changeGameButton = document.createElement('button');
+  changeGameButton.id = "change-game-button";
   changeGameButton.innerHTML = 'CHANGE GAME?';
   humanSection.appendChild(changeGameButton);
 }
