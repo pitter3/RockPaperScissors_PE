@@ -7,7 +7,7 @@ Challenge a robot in a game of Rock, Paper, Scissors! Enjoy either classic mode 
 No need to install! View here - [GitHub Pages](https://pitter3.github.io/RockPaperScissors_PE)
 
 ## Preview of App:
-![gif](https://github.com/joh-ann/rps-solo/assets/126308696/f6f79f33-0151-4225-88c1-3c2a6a7c012f)
+![gif]()
 
 ## Context:
 This is my final project of Mod 1 at Turing School of Software & Design. We were given ~1 week to create this project from scratch using a provided comp found [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html).
