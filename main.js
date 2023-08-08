@@ -154,7 +154,7 @@ function delayLaunchClassic() {
   }, 2000);
 } // this will need to be dynamic and work for difficult as well as classic.
 
-function showChangeGameButton() {
+function showChangeGameButton() { // rename this... it is CREATING the button, not showing it
   var changeGameButton = document.createElement('button');
   changeGameButton.innerHTML = 'CHANGE GAME?';
   humanSection.appendChild(changeGameButton);
