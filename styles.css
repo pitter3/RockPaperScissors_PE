@@ -13,7 +13,11 @@ body {
   justify-content: space-between;
   height: 100%;
   width: 100%;
-}
+  background-color: seagreen;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-weight: 600;
+  }
+
 
 aside {
   height: 100%;
@@ -34,7 +38,7 @@ h1 {
 }
 
 .side-container {
-  height: 25%;
+  height: 28%;
 }
 
 .result-section {
