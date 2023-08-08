@@ -7,6 +7,15 @@ var humanSection = document.querySelector(".human-section");
 var humanScores = document.querySelector("#human-wins");
 var robotScores = document.querySelector("#robot-wins");
 
+
+// DATA MODEL
+
+var humanScore = 0;
+var robotScore = 0;
+var changeGameButtonCreated = false;
+var gameInProgress = false;
+
+
 // EVENT LISTENERS
 
 playZone.addEventListener("click", function(event) {
@@ -19,48 +28,29 @@ playZone.addEventListener("click", function(event) {
   }
 });
 
-humanSection.addEventListener("click", function(event) {
-  if (event.target.id === "change-game-button") {
-    backToGameSelection();
-  }
-});
+ 
+// GAME FLOW
 
 function playRound(event) {
   if (gameInProgress) {
     return; 
   }
-
   gameInProgress = true;
-
-  var humanSelection = getHumanSelection(event);
-  
-  // renderHumanSelection(event); // pass in event.target.id only
-
-renderSelection(event.target.id, true) //
+  var humanSelection = getHumanSelection(event);   // renderHumanSelection(event); // pass in event.target.id only?
+  var robotSelection = getRobotSelection();
+  var humanPlayer = createPlayer("Human", humanSelection);
+  var robotPlayer = createPlayer("Robot", robotSelection);
+  var game = createGame(humanPlayer, robotPlayer);
+  var resultMessage = gameResult(game);
+  renderSelection(event.target.id, true) 
 
   setTimeout(function() {
-    var robotSelection = getRobotSelection();
     renderSelection(robotSelection, false);
-
-    var humanPlayer = createPlayer("Human", humanSelection);
-    var robotPlayer = createPlayer("Robot", robotSelection);
-    var game = createGame(humanPlayer, robotPlayer);
-    var resultMessage = gameResult(game);
     renderWinner(resultMessage);
-    updateScores(game); // remove nested function
-
+    updateScores(game); // remove nested functions
     gameInProgress = false; // Reset the flag after the round is complete
   }, 2000);
 }
-
-
-
-// DATA MODEL
-
-var humanScore = 0;
-var robotScore = 0;
-var changeGameButtonCreated = false;
-var gameInProgress = false;
 
 
 // GAME LOGIC
@@ -146,14 +136,11 @@ function launchClassic() {
   playZone.innerHTML = "";
   // resultSection.innerText = "";
   playZone.innerHTML += 
-    '<img class="selector-image" id="Rock" src="./assets/Rock.png">' +
-    '<img class="selector-image" id="Paper" src="./assets/Paper.png">' +
-    '<img class="selector-image" id="Scissors" src="./assets/Scissors.png">';
+    `<img class="selector-image" id="Rock" src="./assets/Rock.png"> 
+    <img class="selector-image" id="Paper" src="./assets/Paper.png">
+    <img class="selector-image" id="Scissors" src="./assets/Scissors.png">`;
   // resultSection.innerText = "Choose your fighter!"
   renderWinner("Choose your fighter!")
-  if (!changeGameButtonCreated) {
-    showChangeGameButton();
-  }
 }
 
 function delayLaunchClassic() {
@@ -162,13 +149,7 @@ function delayLaunchClassic() {
   }, 2000);
 } // this will need to be dynamic and work for difficult as well as classic.
 
-function showChangeGameButton() { // rename this... it is CREATING the button, not showing it
-  var changeGameButton = document.createElement('button');
-  changeGameButton.innerHTML = 'CHANGE GAME?';
-  changeGameButton.id = 'change-game-button';
-  humanSection.appendChild(changeGameButton);
-  changeGameButtonCreated = true;
-}
+
 
 function renderWins() {
   console.log(humanScore, robotScore)
@@ -212,29 +193,47 @@ function renderComputerChoosing() {
   resultSection.innerText = 'Robot is choosing...';
 }
 
-function backToGameSelection() {
-  changeGameButtonCreated = false;
-  playZone.innerHTML = `
-    <section class="game-selection">
-      CLASSIC
+// function backToGameSelection() {
+//   changeGameButtonCreated = false;
+//   playZone.innerHTML = `
+//     <section class="game-selection">
+//       CLASSIC
       
-      Rock > Scissors
-      Paper > Rock
-      Scissors > Paper
-    </section>
-    <section class="game-selection" id="difficult">
-      DIFFICULT
+//       Rock > Scissors
+//       Paper > Rock
+//       Scissors > Paper
+//     </section>
+//     <section class="game-selection" id="difficult">
+//       DIFFICULT
       
-      Rock > Scissors & Something
-      Paper > Rock & Something
-      Scissors > Paper & Something
-    </section>
-    <!-- Rock, Paper, and Scissor Images Here -->
-  `;
-  resultSection.innerHTML = `Choose your game!`
-  humanSection.innerHTML = `        <section class="side-container">
-  <p class="image">🧠 Human</p>
-  <p class="score-counter" id="human-wins">Wins: ${humanScore} </p>
-</section>
-<!-- Change Game Button Here -->`
-}
+//       Rock > Scissors & Something
+//       Paper > Rock & Something
+//       Scissors > Paper & Something
+//     </section>
+//     <!-- Rock, Paper, and Scissor Images Here -->
+//   `;
+//   resultSection.innerHTML = `Choose your game!`
+//   humanSection.innerHTML = `        <section class="side-container">
+//   <p class="image">🧠 Human</p>
+//   <p class="score-counter" id="human-wins">Wins: ${humanScore} </p>
+// </section>
+// <!-- Change Game Button Here -->`
+// }
+
+// function showChangeGameButton() { // rename this... it is CREATING the button, not showing it
+//   var changeGameButton = document.createElement('button');
+//   changeGameButton.innerHTML = 'CHANGE GAME?';
+//   changeGameButton.id = 'change-game-button';
+//   humanSection.appendChild(changeGameButton);
+//   changeGameButtonCreated = true;
+// }
+
+// humanSection.addEventListener("click", function(event) {
+//   if (event.target.id === "change-game-button") {
+//     backToGameSelection();
+//   }
+// });
+
+// if (!changeGameButtonCreated) {
+//   showChangeGameButton();
+// }
