@@ -1,7 +1,8 @@
 * {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     margin: 5px;
 }
+
 
 html {
   height: 100%;
@@ -13,11 +14,16 @@ body {
   justify-content: space-between;
   height: 100%;
   width: 100%;
-}
+  font-family: 'Kumbh Sans', sans-serif;
+  font-weight: 600;
+  background-color: rgb(143, 216, 241);
+  }
+
 
 aside {
   height: 100%;
   width: 15%;
+  background-color: rgb(150, 150, 236);
 }
 
 main {
@@ -31,31 +37,37 @@ p {
 h1 {
   text-align: center;
   height: 15%;
+  font-size: 50px;
 }
 
 .side-container {
-  height: 25%;
+  height: 26%;
 }
 
 .result-section {
   text-align: center;
   height: 10%;
+  font-size: 30px;
 }
 
 .play-zone {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   height: 72%;
   align-items: center;
   justify-content: center;
 }
   
 .image {
-  height: 190px;
+  height: 140px;
+  font-size: 50px;
+  font-weight: 600;
 }
 
 .score-counter {
-  height: 35px;
+  height: 60px;
+  font-size: 50px;
+  font-weight: 500;
 }
 
 .selector-image {
@@ -69,4 +81,19 @@ h1 {
   height: 250px;
   width: 350px;
   white-space: pre-wrap;
+}
+
+button {
+  cursor: pointer;
+}
+
+.game-selection {
+  border: 5px solid black;
+  font-size: 20px;
+}
+
+.selector-image {
+  height: 175px;
+  width: 175px;
+  border: 5px solid black;
 }

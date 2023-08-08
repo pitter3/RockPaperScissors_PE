@@ -19,6 +19,12 @@ playZone.addEventListener("click", function(event) {
   }
 });
 
+humanSection.addEventListener("click", function(event) {
+  if (event.target.id === "change-game-button") {
+    backToGameSelection();
+  }
+});
+
 function playRound(event) {
   if (gameInProgress) {
     return; 
@@ -28,18 +34,20 @@ function playRound(event) {
 
   var humanSelection = getHumanSelection(event);
   
-  renderHumanSelection(event);
+  // renderHumanSelection(event); // pass in event.target.id only
+
+renderSelection(event.target.id, true) //
 
   setTimeout(function() {
     var robotSelection = getRobotSelection();
-    renderRobotSelection(robotSelection);
+    renderSelection(robotSelection, false);
 
     var humanPlayer = createPlayer("Human", humanSelection);
     var robotPlayer = createPlayer("Robot", robotSelection);
     var game = createGame(humanPlayer, robotPlayer);
     var resultMessage = gameResult(game);
     renderWinner(resultMessage);
-    updateScores(game);
+    updateScores(game); // remove nested function
 
     gameInProgress = false; // Reset the flag after the round is complete
   }, 2000);
@@ -112,12 +120,12 @@ function gameResult(game) {
 function updateScores(game) {
   if (game.human.gameWon === true) {
     humanScore++
-    renderWins();
   }
   if (game.robot.gameWon === true) {
     robotScore++
-    renderWins();
   }
+  console.log("test")
+  renderWins(); //bug
   delayLaunchClassic();
 }
 
@@ -154,15 +162,17 @@ function delayLaunchClassic() {
   }, 2000);
 } // this will need to be dynamic and work for difficult as well as classic.
 
-function showChangeGameButton() {
+function showChangeGameButton() { // rename this... it is CREATING the button, not showing it
   var changeGameButton = document.createElement('button');
   changeGameButton.innerHTML = 'CHANGE GAME?';
+  changeGameButton.id = 'change-game-button';
   humanSection.appendChild(changeGameButton);
   changeGameButtonCreated = true;
 }
 
 function renderWins() {
-  humanScores.innerText = `Wins: ${humanScore}`
+  console.log(humanScore, robotScore)
+  humanScores.innerText = `Wins: ${humanScore}` //bug
   robotScores.innerText = `Wins: ${robotScore}`
 }
 
@@ -187,6 +197,44 @@ function renderRobotSelection(robotSelection) {
   playZone.appendChild(robotSelectionImg);
 }
 
+function renderSelection(selection, resetField) {
+  var img = document.createElement('img');
+  img.classList.add('selector-image');
+  img.id = selection;
+  img.src = `./assets/${selection}.png`;
+  if (resetField) {
+    playZone.innerHTML = ""
+  } 
+    playZone.appendChild(img);
+}
+
 function renderComputerChoosing() {
-  resultSection.innerText = 'Computer is choosing...';
+  resultSection.innerText = 'Robot is choosing...';
+}
+
+function backToGameSelection() {
+  changeGameButtonCreated = false;
+  playZone.innerHTML = `
+    <section class="game-selection">
+      CLASSIC
+      
+      Rock > Scissors
+      Paper > Rock
+      Scissors > Paper
+    </section>
+    <section class="game-selection" id="difficult">
+      DIFFICULT
+      
+      Rock > Scissors & Something
+      Paper > Rock & Something
+      Scissors > Paper & Something
+    </section>
+    <!-- Rock, Paper, and Scissor Images Here -->
+  `;
+  resultSection.innerHTML = `Choose your game!`
+  humanSection.innerHTML = `        <section class="side-container">
+  <p class="image">🧠</p>
+  <p class="score-counter" id="human-wins">Wins: ${humanScore} </p>
+</section>
+<!-- Change Game Button Here -->`
 }
