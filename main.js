@@ -41,6 +41,7 @@ function playRound(event) {
 
 var humanScore = 0;
 var robotScore = 0;
+var changeGameButtonCreated = false;
 
 
 // GAME LOGIC
@@ -123,24 +124,29 @@ function launchGame(event) {
 
 function launchClassic() {
   
-  playZone.innerHTML = ""; // do we need these??
+  playZone.innerHTML = "";
   resultSection.innerText = "";
   playZone.innerHTML += 
     '<img class="selector-image" id="Rock" src="./assets/Rock.png">' +
     '<img class="selector-image" id="Paper" src="./assets/Paper.png">' +
     '<img class="selector-image" id="Scissors" src="./assets/Scissors.png">';
   resultSection.innerText = "Choose your fighter!"
-  showChangeGameButton();
+  if (!changeGameButtonCreated) {
+    showChangeGameButton();
+  }
 }
 
 function delayLaunchClassic() {
-  setTimeout(launchClassic, 2000);
+  setTimeout(function() {
+     launchClassic();
+  }, 2000);
 } // this will need to be dynamic and work for difficult as well as classic.
 
 function showChangeGameButton() {
   var changeGameButton = document.createElement('button');
   changeGameButton.innerHTML = 'CHANGE GAME?';
   humanSection.appendChild(changeGameButton);
+  changeGameButtonCreated = true;
 }
 
 function renderWins() {
