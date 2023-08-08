@@ -114,7 +114,6 @@ function updateScores(game) {
   if (game.robot.gameWon === true) {
     robotScore++
   }
-  console.log("test")
   renderWins(); //bug
   delayLaunchClassic();
 }
