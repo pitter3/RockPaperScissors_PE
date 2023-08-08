@@ -209,7 +209,7 @@ function renderSelection(selection, resetField) {
 }
 
 function renderComputerChoosing() {
-  resultSection.innerText = 'Computer is choosing...';
+  resultSection.innerText = 'Robot is choosing...';
 }
 
 function backToGameSelection() {

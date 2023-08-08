@@ -41,7 +41,7 @@ h1 {
 }
 
 .side-container {
-  height: 28%;
+  height: 26%;
 }
 
 .result-section {
@@ -52,7 +52,7 @@ h1 {
 
 .play-zone {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   height: 72%;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@ h1 {
 }
 
 .score-counter {
-  height: 35px;
+  height: 60px;
   font-size: 50px;
   font-weight: 500;
 }
@@ -85,4 +85,15 @@ h1 {
 
 button {
   cursor: pointer;
+}
+
+.game-selection {
+  border: 5px solid black;
+  font-size: 20px;
+}
+
+.selector-image {
+  height: 175px;
+  width: 175px;
+  border: 5px solid black;
 }
