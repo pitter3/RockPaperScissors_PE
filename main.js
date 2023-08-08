@@ -162,7 +162,7 @@ function launchDifficult() {
     <img class="selector-image" id="Paper" src="./assets/Paper.png">
     <img class="selector-image" id="Scissors" src="./assets/Scissors.png">
     <img class="selector-image" id="Spock" src="./assets/SPOCK.png">
-    <img class="selector-image" id="Devil" src="./assets/Devil.png">
+    <img class="selector-image" id="Devil" src="./assets/DEVIL.png">
     `
   renderWinner("Difficult Mode -- Choose your fighter!");
 }
