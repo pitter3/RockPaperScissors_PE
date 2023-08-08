@@ -50,7 +50,7 @@ function playRound(event) {
     renderSelection(robotSelection, false);
     renderWinner(resultMessage);
     updateScores(game); // remove nested functions
-    gameInProgress = false; // Reset the flag after the round is complete
+    gameInProgress = false;
   }, 2000);
 }
 
@@ -159,7 +159,7 @@ function launchDifficult() {
 function delayLaunchClassic() {
   setTimeout(function() {
      launchClassic();
-  }, 2000);
+  }, 1500);
 } // this will need to be dynamic and work for difficult as well as classic.
 
 
@@ -172,24 +172,6 @@ function renderWins() {
 
 function renderWinner(resultMessage) { // rename this
   resultSection.innerText = resultMessage;
-}
-
-function renderHumanSelection(event) {
-  var humanSelectionImg = document.createElement('img');
-  humanSelectionImg.classList.add('selector-image');
-  humanSelectionImg.id = event.target.id;
-  humanSelectionImg.src = `./assets/${event.target.id}.png`;
-  playZone.innerHTML = ""
-  playZone.innerHTML += `${humanSelectionImg}`
- 
-}
-
-function renderRobotSelection(robotSelection) {
-  var robotSelectionImg = document.createElement('img');
-  robotSelectionImg.classList.add('selector-image');
-  robotSelectionImg.id = robotSelection;
-  robotSelectionImg.src = `./assets/${robotSelection}.png`;
-  selectorContainer.appendChild(robotSelectionImg);
 }
 
 function renderSelection(selection, resetField) {
