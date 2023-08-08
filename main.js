@@ -9,16 +9,13 @@ var robotScores = document.querySelector("#robot-wins");
 var selectorContainer = document.querySelector(".selector-container")
 var changeGameWrapper = document.querySelector(".change-game-wrapper");
 
-
-
-// DATA MODEL
+// DATA MODEL & GLOBAL VARIABLES
 
 var humanScore = 0;
 var robotScore = 0;
 var changeGameButtonCreated = false;
 var gameInProgress = false;
 var difficultMode = false;
-
 
 // EVENT LISTENERS
 
@@ -38,8 +35,7 @@ changeGameWrapper.addEventListener("click", function(event) {
   } 
 });
 
- 
-// GAME FLOW
+ // GAME FLOW
 
 function playRound(event) {
   if (gameInProgress) {
@@ -52,17 +48,16 @@ function playRound(event) {
   var robotPlayer = createPlayer("Robot", robotSelection);
   var game = createGame(humanPlayer, robotPlayer);
   var resultMessage = gameResult(game);
-  renderSelection(event.target.id, true) 
+  renderSelection(event.target.id, true);
 
   setTimeout(function() {
-    renderSelection(robotSelection, false);
+    renderSelection(robotSelection, false);      
     renderWinner(resultMessage);
     updateScores(game);
     renderWins();
     delayLaunch();
   }, 1500);
 }
-
 
 // GAME LOGIC
 
@@ -71,12 +66,12 @@ function createPlayer(name, selection) {
     name: name,
     selection: selection,
   }
-  return player
+  return player;
 }
 
 function getHumanSelection(event) {
   var humanSelection = event.target.id;
-  return humanSelection
+  return humanSelection;
 }
 
 function getRobotSelection() {
@@ -99,7 +94,7 @@ function createGame(human, robot) {
       gameWon: false,
     }
   }
-  return game
+  return game;
 }
 
 function gameResult(game) {
@@ -117,7 +112,6 @@ function gameResult(game) {
     game.human.gameWon = true;
     return `You win! ${game.human.selection} beats ${game.robot.selection}!`;
   }
-
   game.robot.gameWon = true;
   return `You lost :( ${game.human.selection} loses to ${game.robot.selection}!`;
 }
@@ -132,7 +126,6 @@ function updateScores(game) {
 }
 
 // DOM MANIPULATION
-
 
 function launchGame(event) {
   if (event.target.id === 'classic') {
@@ -155,7 +148,7 @@ function launchClassic() {
     <img class="selector-image" id="Paper" src="./assets/Paper.png">
     <img class="selector-image" id="Scissors" src="./assets/Scissors.png">
     `;
-  renderWinner("Choose your fighter!")
+  renderWinner("Choose your fighter!");
 }
 
 function launchDifficult() {
@@ -171,7 +164,7 @@ function launchDifficult() {
     <img class="selector-image" id="Spock" src="./assets/SPOCK.png">
     <img class="selector-image" id="Devil" src="./assets/Devil.png">
     `
-  renderWinner("Difficult Mode -- Choose your fighter!")
+  renderWinner("Difficult Mode -- Choose your fighter!");
 }
 
 function delayLaunch() {
@@ -185,10 +178,9 @@ function delayLaunch() {
   }, 850);
 }
 
-
 function renderWins() {
-  humanScores.innerText = `Wins: ${humanScore}`
-  robotScores.innerText = `Wins: ${robotScore}`
+  humanScores.innerText = `Wins: ${humanScore}`;
+  robotScores.innerText = `Wins: ${robotScore}`;
 }
 
 function renderWinner(resultMessage) {
@@ -201,7 +193,7 @@ function renderSelection(selection, resetField) {
   img.id = selection;
   img.src = `./assets/${selection}.png`;
   if (resetField) {
-    playZone.innerHTML = ""
+    playZone.innerHTML = "";
   } 
     playZone.appendChild(img);
 }
@@ -210,7 +202,7 @@ function renderComputerChoosing() {
   resultSection.innerText = 'Robot is choosing...';
 }
 
-function createChangeGameButton() { // rename this... it is CREATING the button, not showing it
+function createChangeGameButton() {
   var changeGameButton = document.createElement('button');
   changeGameButton.innerHTML = 'CHANGE GAME?';
   changeGameButton.id = 'change-game-button';
