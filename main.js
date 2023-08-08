@@ -6,6 +6,7 @@ var resultSection = document.querySelector(".result-section");
 var humanSection = document.querySelector(".human-section");
 var humanScores = document.querySelector("#human-wins");
 var robotScores = document.querySelector("#robot-wins");
+var selectorContainer = document.querySelector(".selector-container")
 
 
 // DATA MODEL
@@ -20,6 +21,7 @@ var gameInProgress = false;
 
 playZone.addEventListener("click", function(event) {
   if (event.target.classList.contains("game-selection")) {
+
     launchGame(event);
   }
   if (event.target.classList.contains("selector-image")) {
@@ -122,24 +124,36 @@ function updateScores(game) {
 
 
 function launchGame(event) {
-  if (event.target.id = 'classic') {
+  if (event.target.id === 'classic') {
     launchClassic();
   }
-  // if (event.target.id = 'difficult') {
-  //   launchDifficult();
-  // }
+  if (event.target.id === 'difficult') {
+    launchDifficult();
+  }
 }
 
 function launchClassic() {
-  
   playZone.innerHTML = "";
-  // resultSection.innerText = "";
   playZone.innerHTML += 
-    `<img class="selector-image" id="Rock" src="./assets/Rock.png"> 
+    `
+    <img class="selector-image" id="Rock" src="./assets/Rock.png"> 
     <img class="selector-image" id="Paper" src="./assets/Paper.png">
-    <img class="selector-image" id="Scissors" src="./assets/Scissors.png">`;
-  // resultSection.innerText = "Choose your fighter!"
+    <img class="selector-image" id="Scissors" src="./assets/Scissors.png">
+    `;
   renderWinner("Choose your fighter!")
+}
+
+function launchDifficult() {
+  playZone.innerHTML = "";
+  playZone.innerHTML += 
+    `
+    <img class="selector-image" id="Rock" src="./assets/Rock.png"> 
+    <img class="selector-image" id="Paper" src="./assets/Paper.png">
+    <img class="selector-image" id="Scissors" src="./assets/Scissors.png">
+    <img class="selector-image" id="Spock" src="./assets/SPOCK.png">
+    <img class="selector-image" id="Devil" src="./assets/Devil.png">
+    `
+  renderWinner("Difficult Mode -- Choose your fighter!")
 }
 
 function delayLaunchClassic() {
@@ -166,7 +180,8 @@ function renderHumanSelection(event) {
   humanSelectionImg.id = event.target.id;
   humanSelectionImg.src = `./assets/${event.target.id}.png`;
   playZone.innerHTML = ""
-  playZone.appendChild(humanSelectionImg);
+  playZone.innerHTML += `${humanSelectionImg}`
+ 
 }
 
 function renderRobotSelection(robotSelection) {
@@ -174,7 +189,7 @@ function renderRobotSelection(robotSelection) {
   robotSelectionImg.classList.add('selector-image');
   robotSelectionImg.id = robotSelection;
   robotSelectionImg.src = `./assets/${robotSelection}.png`;
-  playZone.appendChild(robotSelectionImg);
+  selectorContainer.appendChild(robotSelectionImg);
 }
 
 function renderSelection(selection, resetField) {

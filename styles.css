@@ -1,5 +1,5 @@
 * {
-    /* border: 1px solid green; */
+    border: 1px solid green;
     margin: 5px;
 }
 
@@ -52,7 +52,6 @@ h1 {
 
 .play-zone {
   display: flex;
-  /* flex-direction: column; */
   height: 72%;
   align-items: center;
   justify-content: center;
@@ -80,7 +79,7 @@ h1 {
   cursor: pointer;
   height: 250px;
   width: 350px;
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 
 button {
@@ -90,10 +89,16 @@ button {
 .game-selection {
   border: 5px solid black;
   font-size: 20px;
+  text-align: center;
 }
 
 .selector-image {
   height: 175px;
   width: 175px;
   border: 5px solid black;
+}
+
+.play-zone-wrapper {
+  display: flex;
+  flex-direction: column;
 }
